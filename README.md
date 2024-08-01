@@ -1,5 +1,9 @@
 # QBO Plasma Web Desktop
 
+
+
+
+
 <a href="https://www.youtube.com/watch?v=FNsvCnnOE1k" target="_blank">
  <img src="qbo.gif" alt="Watch the video" width="100%"  border="0" />
 </a>
@@ -260,7 +264,7 @@ Debian GNU/Linux 12 34f258f0cedd console
 
 
 # Features
-* Plama + COmpiz
+* Plama + Compiz
 * NVIDIA Cuda Tookit 12.5
 * NVIDIA NSight Compute
 * NVIDIA NSight Systems

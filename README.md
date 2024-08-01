@@ -1,7 +1,8 @@
 # QBO Plasma Web Desktop
 
-
-[![Watch the video](https://img.youtube.com/vi/FNsvCnnOE1k/default.jpg)](https://www.youtube.com/watch?v=FNsvCnnOE1k)
+<a href="https://www.youtube.com/watch?v=FNsvCnnOE1k" target="_blank">
+ <img src="qbo.gif" alt="Watch the video" width="100%"  border="0" />
+</a>
 
 Systemd Docker container based on [Kind](https://kind.sigs.k8s.io/docs/design/base-image/) base image and capable of using NVIDIA GPU in the host for CUDA development, gaming, VFX, and beyond. 
 

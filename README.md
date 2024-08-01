@@ -5,9 +5,9 @@
 
 Systemd Docker container based on [Kind](https://kind.sigs.k8s.io/docs/design/base-image/) base image and capable of using NVIDIA GPU in the host for CUDA development, gaming, VFX, and beyond. 
 
-The constainer has been configured with the follwin components:
+The container has been configured with the following components:
 
-* [Plasma](https://github.com/KDE/plasma-desktop) with [Compiz](https://github.com/compiz-reloaded/compiz)
+* [Plasma](https://github.com/KDE/plasma-desktop) + [Compiz](https://github.com/compiz-reloaded/compiz)
 * [selkies-gstreamer](https://github.com/selkies-project/selkies-gstreamer)
 * [WebRTC](https://webrtc.org/)
 * [Coturn](https://github.com/coturn/coturn)
@@ -18,10 +18,10 @@ The constainer has been configured with the follwin components:
 ## Requirements
 
 ### 1. Linux 
-Tested on: F40, Debian 12 and Ubuntu 24.04
+> Tested on: F40, Debian 12 and Ubuntu 24.04
 
 ### 2. NVIDIA GPU 
-Tested on: Tesla V100, Quadro T1000 and Quadro T2000 
+> Tested on: Tesla V100, Quadro T1000 and Quadro T2000 
 
 ### 3. [NVIDIA Drivers](https://www.nvidia.com/download/index.aspx) 
 
@@ -58,7 +58,9 @@ Thu Aug  1 00:11:00 2024
 
 ### 5. Docker 
 
-### 6. NVIDIA Runtime
+> Tested on Docker version 24.0.5
+
+### 6. DOcker NVIDIA Runtime
 
 > Docker Runtime Configuration
 ```bash
@@ -238,10 +240,10 @@ Debian GNU/Linux 12 34f258f0cedd console
 34f258f0cedd login:
 ```
 
-# Crdentials
+# Credentials
 > https://localhost:8080
 > Username: qbo
-> Password: 980
+> Password: 960
 
 
 # Features

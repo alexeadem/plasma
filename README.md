@@ -4,7 +4,9 @@
  <img src="qbo.gif" alt="Watch the video" width="100%"  border="0" />
 </a>
 
-A systemd Docker container based on the [Kind](https://kind.sigs.k8s.io/docs/design/base-image/) base image, capable of using NVIDIA GPUs on the host for CUDA development, gaming, VFX, and more."
+A systemd Docker container based on the [Kind](https://kind.sigs.k8s.io/docs/design/base-image/) base image, capable of using NVIDIA GPUs on the host for CUDA development, gaming, VFX, and more.
+
+It can we deployed locally or in [QBO Cloud](https://qbo.io/#/).
 
 The container has been configured with the following components:
 

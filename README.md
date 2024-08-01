@@ -78,7 +78,7 @@ cat /etc/docker/daemon.json
 }
 ```
 
-> Get Docker RUntime Configuration
+> Get Docker Runtime Configuration
 ```bash
  docker info | grep nvidia
 ```
@@ -90,8 +90,14 @@ cat /etc/docker/daemon.json
 ## Get Started
 
 ```bash
-git clone https://github.com/alexeadem/plasma
- ./qbo start plasma -r prod
+git clone https://github.com/alexeadem/plasma.git
+```
+```bash
+cd plasma 
+```
+
+```bash
+./qbo start plasma 
 ```
 ```bash
 CUDA_VERSION = 12.5
@@ -241,9 +247,13 @@ Debian GNU/Linux 12 34f258f0cedd console
 34f258f0cedd login:
 ```
 
-# Credentials
-> https://localhost:8080
+# Accessing the Desktop
+> Open your web browser.
+> Navigate to: http://localhost:8080
+
+# Credentials 
 > Username: qbo
+> 
 > Password: 960
 
 

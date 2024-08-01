@@ -1,0 +1,107 @@
+
+#!/bin/bash
+
+bin=instance
+version=1.0
+TAG=plasma
+color=75
+REPO=alexeadem/$bin:$TAG
+
+exit_on_error() {
+    exit_code=$1
+    last_command=${@:2}
+    if [ $exit_code -ne 0 ]; then
+        >&2 echo "\"${last_command}\" command failed with exit code ${exit_code}."
+        exit $exit_code
+    fi
+}
+
+color() {
+	local codes=()
+	if [ "$1" = 'bold' ]; then
+		codes=("${codes[@]}" '1')
+		shift
+	fi
+	if [ "$#" -gt 0 ]; then
+		local code=
+		case "$1" in
+			# see https://en.wikipedia.org/wiki/ANSI_escape_code#Colors
+			black) code=30 ;;
+			red) code=31 ;;
+			green) code=32 ;;
+			yellow) code=33 ;;
+			blue) code=34 ;;
+			magenta) code=35 ;;
+			cyan) code=36 ;;
+			white) code=37 ;;
+		esac
+		if [ "$code" ]; then
+			codes=("${codes[@]}" "$code")
+		fi
+	fi
+	local IFS=';'
+	echo -en '\033['"${codes[*]}"'m'
+}
+
+wrap_color() {
+	text="$1"
+	shift
+	color "$@"
+	echo -n "$text"
+	color reset
+	echo
+}
+
+wrap_good() {
+	echo "$(wrap_color "$1" white): $(wrap_color "$2" green)"
+}
+wrap_bad() {
+	echo "$(wrap_color "$1" bold): $(wrap_color "$2" bold red)"
+}
+wrap_warning() {
+    echo "$(wrap_color "$1" bold): $(wrap_color "$2" bold yellow)"
+}
+
+if command -v nvidia-smi > /dev/null 2>&1; then
+        export CUDA_VERSION=$(nvidia-smi --version | grep -i 'cuda version' | cut -d: -f2 | tr -d ' ')
+        echo "CUDA_VERSION = $CUDA_VERSION"
+        export NVIDIA_DRIVER_VERSION="$(nvidia-smi --version | grep 'DRIVER version' | cut -d: -f2 | tr -d ' ')"
+        echo "NVIDIA_DRIVER_VERSION = $NVIDIA_DRIVER_VERSION"
+else
+     wrap_bad "NVIDIA GPU required" "nvidia-smi not found"
+     exit 1
+fi
+
+
+start() {
+
+    REPO=eadem/$bin:$TAG
+
+
+	i=$(docker images $REPO --format "{{.ID}}")
+	(PS4="\033[1;38;5;${color}m>>>\033[0m "; set -x; docker run --name $TAG -p8080:8080 --tmpfs /dev/shm:rw --ulimit nofile=65536:65536 -e SELKIES_ENABLE_BASIC_AUTH=true -e PASSWD=960 -e DISPLAY=:5 -e CUDA_VERSION=$CUDA_VERSION -e NVIDIA_DRIVER_VERSION=$NVIDIA_DRIVER_VERSION  --gpus 'all' --privileged -v /lib/modules:/lib/modules:ro -it $i)
+}
+
+usage() {
+    echo -e "\033[1;38;5;${color}m>>>\033[0m $0 \033[1;38;5;${color}mstart\033[0m { plasma } -- start qbo plasma desktop"
+    exit 1
+}
+
+if [ -z "$1" ]; then
+	usage
+elif [ "$1" = "start" ]; then
+    shift $((OPTIND))
+    if [ -z $1 ]; then
+        usage
+    fi
+    if [ $1 = "plasma" ]; then
+        TAG="plasma";
+    else
+        usage
+    fi
+	start
+else 
+	usage
+fi
+
+

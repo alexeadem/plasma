@@ -4,7 +4,7 @@
  <img src="qbo.gif" alt="Watch the video" width="100%"  border="0" />
 </a>
 
-Systemd Docker container based on [Kind](https://kind.sigs.k8s.io/docs/design/base-image/) base image and capable of using NVIDIA GPU in the host for CUDA development, gaming, VFX, and beyond. 
+A systemd Docker container based on the [Kind](https://kind.sigs.k8s.io/docs/design/base-image/) base image, capable of using NVIDIA GPUs on the host for CUDA development, gaming, VFX, and more."
 
 The container has been configured with the following components:
 
@@ -19,7 +19,7 @@ The container has been configured with the following components:
 ## Requirements
 
 ### 1. Linux 
-> Tested on: F40, Debian 12 and Ubuntu 24.04
+> Tested on: Fedora 40, Debian 12, and Ubuntu 24.04
 
 ### 2. NVIDIA GPU 
 > Tested on: Tesla V100, Quadro T1000 and Quadro T2000 
